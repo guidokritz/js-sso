@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="//platform.twitter.com/anywhere.js?id=SnTzP4MjCQjzaBr1m9bJoA&v=1"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="scripts/social.js"></script>
+	</head>
+	<body>
+		<script>
+		Social.init({
+			lang: "es_ES",
+			facebook: {
+				appId	   : "155089481271168",
+				channelUrl : "http://localhost/development/channel.html",
+				status	   :true,
+				cookie	   :true,
+				xfbml	   :true
+			},
+			twitter: {
+				callback_url: location.href
+			}
+		});
+		Social.bind("connect", function(user) {
+			alert("Hello " + user.name);
+		}, function() {
+			console.log("error");
+		});
+		$(document).ready(function() {
+			$("#loginFacebook").click(function() {
+				Social.connect('facebook');
+				return false;
+			});
+			$("#loginTwitter").click(function() {
+				Social.connect('twitter');
+				return false;
+			})
+		});
+		</script>
+		
+		<a href="" id="loginFacebook">Login Facebook</a>
+		<a href="" id="loginTwitter">Login Twitter</a>
+	</body>
+</html>
