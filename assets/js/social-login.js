@@ -89,7 +89,8 @@ var Social = ( function() {
 		 * @param {Object} [options]
 		 */
 		this.init = function( options ) {
-			var	instance	= this
+			var
+					instance	= this
 				,	conf			= this.settings;
 				
 			for ( var attrname in options )
@@ -157,7 +158,8 @@ var Social = ( function() {
 		 * @param {String} network Network ID.
 		 */
 		this.connect = function( network ) {
-			var	instance	= this
+			var
+					instance	= this
 				,	conf			= this.settings;
 			
 			//Wait until the instance initialization is completed.
