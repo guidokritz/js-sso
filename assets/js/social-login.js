@@ -12,6 +12,8 @@ var Social = ( function() {
 	/**
 	 * Initialize Facebook JS SDK.
 	 * 
+	 * @private
+	 * 
 	 * @param {Social} instance Class instance.
 	 */
 	function fb_init( instance ) {
@@ -34,6 +36,8 @@ var Social = ( function() {
 	
 	/**
 	 * Initialize Twitter JS SDK.
+	 * 
+	 * @private
 	 * 
 	 * @param {Social} instance Class instance.
 	 */
@@ -83,10 +87,10 @@ var Social = ( function() {
 		/**
 		 * Initialize SDKs.
 		 * 
-		 * @param {Object} options
+		 * @param {Object} [options]
 		 */
 		this.init = function( options ) {
-			var instance	= this
+			var	instance	= this
 				,	conf			= this.settings;
 				
 			for ( var attrname in options )
@@ -135,7 +139,7 @@ var Social = ( function() {
 		 * Dispatch an event or group or events.
 		 * Optionally, you can add any number of arguments to pass to the callbacks.
 		 * 
-		 * @param {Array|String} evts Event name or array of event names.
+		 * @param {String|String[]} evts Event name or array of event names.
 		 */
 		this.dispatch = function( evts ) {
 			if ( !( evts instanceof Array ) )
@@ -154,7 +158,7 @@ var Social = ( function() {
 		 * @param {String} network Network ID.
 		 */
 		this.connect = function( network ) {
-			var instance	= this
+			var	instance	= this
 				,	conf			= this.settings;
 			
 			//Wait until the instance initialization is completed.
