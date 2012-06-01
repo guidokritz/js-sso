@@ -1,5 +1,4 @@
 /**
- * @todo Improve the way event's callbacks are called.
  * @todo Complete the implementation of Twitter OAuth login.
  * @todo Complete JSDoc.
  */
@@ -47,21 +46,21 @@ var Social = ( function() {
 	
 	return new function() {
 
-		this.ERRORS = {
+		this.ERRORS				= {
 			POPUP_BLOCKED : 1000
 		};
 
-		this.settings = {
+		this.settings			= {
 			useFacebook: true,
 			useTwitter: false,
 			lang: 'en_US'
 		}
-		this.events = {};
-		this.TW = null;
-		this.FB = null;
-		this.initialized = false;
-		this.networks = 2;
-		this.ready = 0
+		this.events				= {};
+		this.TW						= null;
+		this.FB						= null;
+		this.initialized	= false;
+		this.networks			= 2;
+		this.ready				= 0;
 
 		/**
 		 * Network SDK initializarion completed.
