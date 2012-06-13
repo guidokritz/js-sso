@@ -145,6 +145,7 @@ var Social = ( function() {
 			if ( !( evts instanceof Array ) )
 				evts = [ evts ];
 
+			//Remove the first argument (the events to dispatch) from the arguments list.
 			var args = [].splice.call( arguments, 1 );
 
 			for ( var i in evts )
@@ -189,12 +190,13 @@ var Social = ( function() {
 						}
 					}, 1000 );
 					instance.tw_popup = window.open( conf.twitter.req_url, 'tw_connect_popup', 'width=800,height=500,toolbar=no,menubar=no,scrollbars=no,status=1,', true  );
-					instance.tw_popup_callback = function( success ) {
+					instance.tw_popup_callback = function( response ) {
+						instance.log( response.success );
 						clearTimeout( instance.tw_popup_timeout );
 						delete( instance.tw_popup_timeout );
 						delete( instance.tw_popup_callback );
 						delete( instance.tw_popup );
-						if ( success ) {
+						if ( response.success ) {
 							instance.dispatch( [ 'tw_connect_success', 'connect_success' ] );
 						} else {
 							instance.dispatch( [ 'tw_connect_error', 'connect_error' ] );
@@ -209,7 +211,8 @@ var Social = ( function() {
 		 */
 		this.log = function() {
 			if ( window.console )
-				console.log( arguments );
+				for ( var i = 0 ; i < arguments.length ; i++ )
+					console.log( arguments[i] );
 		};
 		
 	}

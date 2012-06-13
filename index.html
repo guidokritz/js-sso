@@ -10,25 +10,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="assets/js/social-login.js"></script>
 		<script>
-		Social.init({
-			lang: "es_ES",
+		Social.init( {
+			lang: 'es_ES',
 			facebook: {
-				appId	   : "155089481271168",
-				channelUrl : "http://localhost/development/channel.html",
-				status	   :true,
-				cookie	   :true,
-				xfbml	   :true
+				appId				: '155089481271168',
+				channelUrl	: 'http://localhost/development/channel.html',
+				status			: true,
+				cookie			: true,
+				xfbml				: true
 			},
 			twitter: {
-				callback_url: location.href
+				callback_url	: location.href,
+				req_url				: location.href + 'twitter-login.php'
 			}
-		});
+		} );
+		
 		Social.bind( 'fb_connect_success', function( user ) {
 			alert("Hello " + user.name);
 		} );
 		Social.bind( 'fb_connect_error', function() {
-			alert( 'error' );
+			alert( 'FB error' );
 		} );
+		Social.bind( 'tw_connect_error', function() {
+			setTimeout( function() { alert( 'Twitter error' ); }, 50 );
+		} );
+		
 		$( document ).ready( function() {
 			$("#loginFacebook").click( function() {
 				Social.connect('facebook');
